@@ -1,0 +1,20 @@
+read_verilog arm_core.v
+read_verilog decod.v
+read_verilog registre.v
+read_verilog fifo_129b.v
+read_verilog fifo_32b.v
+read_verilog multiplier.v
+read_verilog multiplier32c.v
+read_verilog exec.v
+read_verilog alu.v
+read_verilog shifter.v
+read_verilog fifo_72b.v
+read_verilog ifetch.v
+read_verilog mem.v
+
+hierarchy -check -top arm_core
+synth            -top arm_core
+dfflibmap -liberty /users/enseig/demarigny/alliance-check-toolkit/benchs/cells/nsxlib/nsxlib.lib
+abc       -liberty /users/enseig/demarigny/alliance-check-toolkit/benchs/cells/nsxlib/nsxlib.lib
+clean
+write_blif blif/core.blif

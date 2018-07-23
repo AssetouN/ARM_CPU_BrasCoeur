@@ -1,0 +1,10 @@
+read_verilog shifter.v
+read_verilog fifo_72b.v
+read_verilog alu.v
+read_verilog exec.v
+hierarchy -check -top exec
+synth            -top exec
+dfflibmap -liberty /users/enseig/demarigny/alliance-check-toolkit/benchs/cells/nsxlib/nsxlib.lib
+abc       -liberty /users/enseig/demarigny/alliance-check-toolkit/benchs/cells/nsxlib/nsxlib.lib
+clean
+write_blif exec_v.blif
